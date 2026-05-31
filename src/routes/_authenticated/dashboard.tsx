@@ -73,6 +73,14 @@ function Dashboard() {
           />
         )}
       </div>
+
+      <div className="mt-8 rounded-2xl border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
+        <p className="text-sm font-medium">Your account ID</p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          {role === "staff" ? "Patients share this with you to receive reports." : "Share this with your clinic so they can send you reports."}
+        </p>
+        <code className="mt-2 block break-all rounded-md bg-muted px-3 py-2 font-mono text-xs">{user?.id}</code>
+      </div>
     </div>
   );
 }
