@@ -11,6 +11,7 @@ export const Route = createFileRoute("/_authenticated")({
 function Layout() {
   const { user, loading, role, signOut } = useAuth();
   const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   useEffect(() => {
     if (!loading && !user) navigate({ to: "/auth" });
   }, [user, loading, navigate]);
@@ -19,7 +20,6 @@ function Layout() {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;
   }
 
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
   const nav = [
     { to: "/dashboard", label: "Overview", icon: Activity },
     { to: "/reports", label: "Reports", icon: FileText },
